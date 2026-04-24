@@ -1,11 +1,15 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from pathlib import Path
 import joblib
 import uvicorn
 
 
-model = joblib.load('model_tree.pkl')
-scaler = joblib.load('scaler.pkl')
+
+BASE_DIR = Path(__file__).parent
+
+model = joblib.load(BASE_DIR / 'model_tree.pkl')
+scaler = joblib.load(BASE_DIR / 'scaler.pkl')
 
 avocado_app = FastAPI()
 
