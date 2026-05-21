@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ml_avocado.iml" filepath="$PROJECT_DIR$/.idea/ml_avocado.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ml_avocado_ripeness_dataset.iml" filepath="$PROJECT_DIR$/.idea/ml_avocado_ripeness_dataset.iml" />
     </modules>
   </component>
 </project>
