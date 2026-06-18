@@ -1,0 +1,64 @@
+{
+  "firmness": 14.5,
+  "hue": 19,
+  "saturation": 40,
+  "brightness": 26,
+  "color_category": "black",
+  "sound_db": 34,
+  "weight_g": 175,
+  "size_cm3": 261
+}
+ожидаемы ответ: "status": "ripe"
+
+
+{
+  "firmness": 71.7,
+  "hue": 53,
+  "saturation": 69,
+  "brightness": 75,
+  "color_category": "green",
+  "sound_db": 69,
+  "weight_g": 206,
+  "size_cm3": 175
+}
+ожидаемы ответ: "status": "pre-conditioned"
+
+
+{
+  "firmness": 88.5,
+  "hue": 60,
+  "saturation": 94,
+  "brightness": 46,
+  "color_category": "dark green",
+  "sound_db": 79,
+  "weight_g": 220,
+  "size_cm3": 143
+}
+
+ожидаемы ответ: "status": "hard"
+
+
+{
+  "firmness": 93.8,
+  "hue": 105,
+  "saturation": 87,
+  "brightness": 41,
+  "color_category": "dark green",
+  "sound_db": 75,
+  "weight_g": 299,
+  "size_cm3": 140
+}
+ожидаемы ответ: "status": "hard"
+
+
+{
+  "firmness": 42.5,
+  "hue": 303,
+  "saturation": 58,
+  "brightness": 32,
+  "color_category": "purple",
+  "sound_db": 63,
+  "weight_g": 200,
+  "size_cm3": 227
+}
+ожидаемы ответ: "status": "breaking"

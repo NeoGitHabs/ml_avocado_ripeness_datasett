@@ -4,14 +4,13 @@ from pathlib import Path
 import joblib
 import uvicorn
 
-
-
 BASE_DIR = Path(__file__).parent
 
-model = joblib.load(BASE_DIR / 'model_tree.pkl')
-scaler = joblib.load(BASE_DIR / 'scaler.pkl')
+model = joblib.load(BASE_DIR / 'model_tree_AvocadoRipenessDataset.pkl')
+scaler = joblib.load(BASE_DIR / 'scaler_AvocadoRipenessDataset.pkl')
 
 avocado_app = FastAPI()
+
 
 class AvocadoSchema(BaseModel):
     firmness: float
@@ -23,30 +22,34 @@ class AvocadoSchema(BaseModel):
     weight_g: float
     size_cm3: float
 
-type_color = ['dark green', 'green', 'purple']
-
 
 @avocado_app.post('/predict')
 async def predict(avocado: AvocadoSchema):
-    avocado_dict = avocado.dict()
-
-    color = avocado_dict.pop('color_category')
-
+    color = avocado.color_category
     color_0_1 = [
         1 if color == "dark green" else 0,
         1 if color == "green" else 0,
         1 if color == "purple" else 0
     ]
 
-    features = list(avocado_dict.values()) + color_0_1
+    numerical_features = [
+        avocado.firmness,
+        avocado.hue,
+        avocado.saturation,
+        avocado.brightness,
+        avocado.sound_db,
+        avocado.weight_g,
+        avocado.size_cm3
+    ]
+
+    features = numerical_features + color_0_1
     scaled = scaler.transform([features])
 
-    pred = model.predict(scaled)[0]
-
+    pred = str(model.predict(scaled)[0])
     proba = model.predict_proba(scaled)[0][1]
-    print(proba)
+    print(f"Probability: {proba}")
 
-    return {'approved': pred}
+    return {'status': pred}
 
 
 if __name__ == '__main__':
